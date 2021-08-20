@@ -1,15 +1,22 @@
+
 #include "drivers/frame_buffer.h"
 #include "drivers/serial_port.h"
-#include "segmentation/memory_segments.h"
+#include "drivers/io.h"
+#include "segmentation/segments.h"
+#include "interrupts/interrupts.h"
+#include "interrupts/keyboard.h"
+#include "interrupts/pic.h"
 /* The C function */
-int sum_of_three(int arg1, int arg2, int arg3)
-{
-segments_install_gdt();
-char RH[] = "Red Hood ";
+void kmain()
+    {
 
-fb_write(RH, 19);
-serial_write(0x3F8, RH, 19);
+       //char arr[] = "RedHood";
+       //fb_move_cursor(6*80);
+       //fb_write(arr, 20);
+       //serial_write(arr, 20);
+       segments_install_gdt();
+       interrupts_install_idt();
 
-return arg1 + arg2 + arg3;
-}
+    }
+
 
