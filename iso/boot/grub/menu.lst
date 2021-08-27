@@ -3,3 +3,4 @@
 
     title RH
     kernel /boot/kernel.elf
+    module /modules/program
